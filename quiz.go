@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 )
 
 var token string = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxNDEyNWIzMTA3Nzk5NjMyNDcwOTRkMTAwZWFiODgzNGNmNTNhMTJmZmZjNTg4ZWE1MGVjMzQ1MDMzZDEyNDJmM2VkOThjMmMyMTkyZjcwIn0.eyJhdWQiOiIxODIyMjQ5MzguMjNhNzJmNDA2NzI4M2I0OWY5NjZmOTMyMzViMTg2NDQzN2VjNWY2YTlmY2M5NjVlOGIzOTM5MGRmNWQ2YWE5NCIsImp0aSI6IjYxNDEyNWIzMTA3Nzk5NjMyNDcwOTRkMTAwZWFiODgzNGNmNTNhMTJmZmZjNTg4ZWE1MGVjMzQ1MDMzZDEyNDJmM2VkOThjMmMyMTkyZjcwIiwiaWF0IjoxNTYxOTY2MTcyLCJuYmYiOjE1NjE5NjYxNzIsImV4cCI6MTU3NzUxODE3Miwic3ViIjoiOTg1ODQ5ODYxNjA5MTYwNzA0Iiwic2NvcGVzIjpbInJlYWQiXX0.DiPD3wKAtQBp9LSR-bRQ7jbiyU3DllruQXmjpila25JevjzCabL4vpHdlbMtmsdJEXZu3iBYyjL-6mbXCBW4GHHzawvnG5P8Vixogao2E9vbzUiZrauvBn1ysRiDNHenVykeSPls8BpnMIMlxysJ7B121vU1fJ3H665icP7I2FmJinybC-KWtcz-msIFw2d5TIN1pf3xxTa-UfzTXIaLf7vzjzIGnJnRFM35RjFwu2dx-uYf8x4GEQDtrb1hTqHf9zzWv68cw7uE0paLlCfeyo-oKuEXJqBdglh06eCzfgfCj0aaB7V5LGDV93-mTNlzp1RudMYnW-m6ORTUeJ5t0Q"
@@ -27,14 +26,12 @@ type Answer struct {
 	Round   int    `json:"round"`
 }
 
-func ParseQuestion(question string) (string, int) {
+func ParseQuestion(question string) (string, string) {
 
 	equalPosition := equalPosition(question)
-	ques := question[:equalPosition]
-	answer := question[equalPosition:]
-
-	ans, _ := strconv.Atoi(answer)
-	return ques, ans
+	ques := question[:equalPosition-1]
+	answer := question[equalPosition+2:]
+	return ques, answer
 }
 
 func equalPosition(question string) int {
@@ -48,7 +45,7 @@ func equalPosition(question string) int {
 
 func createGame() Quiz {
 	accessToken := "Bearer " + token
-	url := "https://apiv2.twitcasting.tv/internships/2019/games?level=2"
+	url := "https://apiv2.twitcasting.tv/internships/2019/games?level=1"
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", url, nil)

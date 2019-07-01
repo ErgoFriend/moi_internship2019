@@ -11,11 +11,17 @@ func main() {
 	strQuiz, ans := ParseQuestion(quiz.Question)
 
 	fmt.Printf("%+v\n", quiz)
-	fmt.Printf("%+v\n", strQuiz)
-	fmt.Printf("%+v\n", ans)
+	// fmt.Printf("%+v = %+v\n", strQuiz, ans)
 
-	result := postAnswear(quiz.ID, "*-*+")
-	fmt.Printf("%+v\n", result)
+	_, formula := Search(strQuiz, ans)
+	fmt.Printf("%+v\n", formula)
 
-	_ = deleteGame()
+	// rep := regexp.MustCompile("1|2|3|4|5|6|7|8|9| ")
+	// symStr := rep.ReplaceAllString(formula, "")
+	// fmt.Printf("%+v\n", a)
+
+	// result := postAnswear(quiz.ID, symStr)
+	// fmt.Printf("%+v\n", result)
+
+	// _ = deleteGame()
 }
