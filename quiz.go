@@ -1,11 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 )
+
+var token string = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxNDEyNWIzMTA3Nzk5NjMyNDcwOTRkMTAwZWFiODgzNGNmNTNhMTJmZmZjNTg4ZWE1MGVjMzQ1MDMzZDEyNDJmM2VkOThjMmMyMTkyZjcwIn0.eyJhdWQiOiIxODIyMjQ5MzguMjNhNzJmNDA2NzI4M2I0OWY5NjZmOTMyMzViMTg2NDQzN2VjNWY2YTlmY2M5NjVlOGIzOTM5MGRmNWQ2YWE5NCIsImp0aSI6IjYxNDEyNWIzMTA3Nzk5NjMyNDcwOTRkMTAwZWFiODgzNGNmNTNhMTJmZmZjNTg4ZWE1MGVjMzQ1MDMzZDEyNDJmM2VkOThjMmMyMTkyZjcwIiwiaWF0IjoxNTYxOTY2MTcyLCJuYmYiOjE1NjE5NjYxNzIsImV4cCI6MTU3NzUxODE3Miwic3ViIjoiOTg1ODQ5ODYxNjA5MTYwNzA0Iiwic2NvcGVzIjpbInJlYWQiXX0.DiPD3wKAtQBp9LSR-bRQ7jbiyU3DllruQXmjpila25JevjzCabL4vpHdlbMtmsdJEXZu3iBYyjL-6mbXCBW4GHHzawvnG5P8Vixogao2E9vbzUiZrauvBn1ysRiDNHenVykeSPls8BpnMIMlxysJ7B121vU1fJ3H665icP7I2FmJinybC-KWtcz-msIFw2d5TIN1pf3xxTa-UfzTXIaLf7vzjzIGnJnRFM35RjFwu2dx-uYf8x4GEQDtrb1hTqHf9zzWv68cw7uE0paLlCfeyo-oKuEXJqBdglh06eCzfgfCj0aaB7V5LGDV93-mTNlzp1RudMYnW-m6ORTUeJ5t0Q"
 
 type QuizError struct {
 	Code    string `json:"code"`
@@ -18,14 +21,13 @@ type Quiz struct {
 	Error    QuizError `json:"error"`
 }
 type Answer struct {
-	score   string
-	message string
-
-	hints string
-	round int
+	Score   string `json:"score"`
+	Message string `json:"message"`
+	Hints   string `json:"hints"`
+	Round   int    `json:"round"`
 }
 
-func parseQuestion(question string) (string, int) {
+func ParseQuestion(question string) (string, int) {
 
 	equalPosition := equalPosition(question)
 	ques := question[:equalPosition]
@@ -45,7 +47,7 @@ func equalPosition(question string) int {
 }
 
 func createGame() Quiz {
-	accessToken := "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjgwMDNiOGJkMWU5ZmEyYTdjNjU5MDYxYTUwOTQ1ODQzNDU0YTJiYzMyZWU2YTI0OTcxNzg2ODRlNzk4NWE5NDU0MTUzNmI4MWZjNzExNGNmIn0.eyJhdWQiOiIxODIyMjQ5MzguMjNhNzJmNDA2NzI4M2I0OWY5NjZmOTMyMzViMTg2NDQzN2VjNWY2YTlmY2M5NjVlOGIzOTM5MGRmNWQ2YWE5NCIsImp0aSI6IjgwMDNiOGJkMWU5ZmEyYTdjNjU5MDYxYTUwOTQ1ODQzNDU0YTJiYzMyZWU2YTI0OTcxNzg2ODRlNzk4NWE5NDU0MTUzNmI4MWZjNzExNGNmIiwiaWF0IjoxNTYxNjE3OTMwLCJuYmYiOjE1NjE2MTc5MzAsImV4cCI6MTU3NzE2OTkzMCwic3ViIjoiOTg1ODQ5ODYxNjA5MTYwNzA0Iiwic2NvcGVzIjpbInJlYWQiXX0.HlyPPVNRzp9Zpz7hCPe0b1NAKAgk-T45819hMJYhHdXky72xbYCs373-wPH5hbAtuNIwc11h4yudQvxEuWL6cg-Pi1xHj38zkAseE_gK5wmnUWxpdvwZ-I5dhFaXuPmzVu4YGQxmVPMN07R7sZ6HY779ay90FpcErwjcISQNJtQKPMT3WRdvriSpCDJNpCCLRrKmXU7Ss1NL-_Nj_27ex8U9nwX6fldzSLnUX6auCRIirUie-mcjLMDiFqiGKBh7TSO7Ul5Hhv6uD8qqkXTGBk6M2Dkqe3sn1aI3FiEMQ3kbt6kSf4Pu42MuYgwdSDv7CCb8J56PXCZ7whDsCiGOxw"
+	accessToken := "Bearer " + token
 	url := "https://apiv2.twitcasting.tv/internships/2019/games?level=2"
 
 	client := &http.Client{}
@@ -61,14 +63,41 @@ func createGame() Quiz {
 	return quiz
 }
 
+func postAnswear(gameID, answer string) Answer {
+	accessToken := "Bearer " + token
+	url := "https://apiv2.twitcasting.tv/internships/2019/games/" + gameID
+	client := &http.Client{}
+	jsonStr := `{ "answer": "` + answer + `"}`
+	req, _ := http.NewRequest(
+		"POST",
+		url,
+		bytes.NewBuffer([]byte(jsonStr)),
+	)
+	req.Header.Set("Authorization", accessToken)
+	req.Header.Set("Content-Type", "application/json")
+	res, _ := client.Do(req)
+	body, _ := ioutil.ReadAll(res.Body)
+	defer res.Body.Close()
+
+	var ans Answer
+	json.Unmarshal(body, &ans)
+
+	if ans.Round == 1 {
+		_ = deleteGame()
+	}
+
+	return ans
+}
+
 func deleteGame() bool {
-	accessToken := "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjgwMDNiOGJkMWU5ZmEyYTdjNjU5MDYxYTUwOTQ1ODQzNDU0YTJiYzMyZWU2YTI0OTcxNzg2ODRlNzk4NWE5NDU0MTUzNmI4MWZjNzExNGNmIn0.eyJhdWQiOiIxODIyMjQ5MzguMjNhNzJmNDA2NzI4M2I0OWY5NjZmOTMyMzViMTg2NDQzN2VjNWY2YTlmY2M5NjVlOGIzOTM5MGRmNWQ2YWE5NCIsImp0aSI6IjgwMDNiOGJkMWU5ZmEyYTdjNjU5MDYxYTUwOTQ1ODQzNDU0YTJiYzMyZWU2YTI0OTcxNzg2ODRlNzk4NWE5NDU0MTUzNmI4MWZjNzExNGNmIiwiaWF0IjoxNTYxNjE3OTMwLCJuYmYiOjE1NjE2MTc5MzAsImV4cCI6MTU3NzE2OTkzMCwic3ViIjoiOTg1ODQ5ODYxNjA5MTYwNzA0Iiwic2NvcGVzIjpbInJlYWQiXX0.HlyPPVNRzp9Zpz7hCPe0b1NAKAgk-T45819hMJYhHdXky72xbYCs373-wPH5hbAtuNIwc11h4yudQvxEuWL6cg-Pi1xHj38zkAseE_gK5wmnUWxpdvwZ-I5dhFaXuPmzVu4YGQxmVPMN07R7sZ6HY779ay90FpcErwjcISQNJtQKPMT3WRdvriSpCDJNpCCLRrKmXU7Ss1NL-_Nj_27ex8U9nwX6fldzSLnUX6auCRIirUie-mcjLMDiFqiGKBh7TSO7Ul5Hhv6uD8qqkXTGBk6M2Dkqe3sn1aI3FiEMQ3kbt6kSf4Pu42MuYgwdSDv7CCb8J56PXCZ7whDsCiGOxw"
-	url := "	https://apiv2.twitcasting.tv/internships/2019/games/"
+	accessToken := "Bearer " + token
+	url := "https://apiv2.twitcasting.tv/internships/2019/games/"
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("DELETE", url, nil)
 	req.Header.Set("Authorization", accessToken)
 	res, _ := client.Do(req)
+	_, _ = ioutil.ReadAll(res.Body)
 	defer res.Body.Close()
 
 	if res.StatusCode == 200 {
