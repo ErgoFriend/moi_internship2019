@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"regexp"
 	"strconv"
 	"sync"
@@ -67,5 +69,7 @@ func main() {
 	// fmt.Printf("%s\n", value)
 
 	// fmt.Printf("%+v\n", resultAnswer)
+
+	bufio.NewScanner(os.Stdin).Scan()
 
 }
