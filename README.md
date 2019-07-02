@@ -22,3 +22,7 @@ Quiz: {ID:4563a7ee06785e274545bd3380624c65 Question:1 ? 4 ? 3 ? 1 ? 9 ? 3 ? 3 = 
 ques: 1 ? 4 ? 3 ? 1 ? 9 ? 3 ? 3
 answer: 5
 {Score: Message:正解です！チャレンジありがとうございました。スコアは 191591 でした。ハイスコア更新です👏インターン応募フォームはこちら『 https://forms.gle/KBycX3w1azAnHqdg8 』です。また、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 dnNUvxhHv9etyheEAX1nianR30bYEAjtpuF+2KhT8jkZOg== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
+
+Kasu:moi_internship2019 ergop$ ./moi_internship2019 
+Quiz: {ID:d4a1b3ca309840fb84f714e0776178b4 Question:4 ? 8 ? 7 ? 1 ? 2 ? 7 ? 5 = -106 Error:{Code: Message:}}
+{Score: Message:正解です！チャレンジありがとうございました。スコアは 191603 でした。ハイスコア更新です👏インターン応募フォームはこちら『 https://forms.gle/KBycX3w1azAnHqdg8 』です。また、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 DCVwq7rNrPpG9UlubBCKzssi9nVjJIQt05O3zxCblDIrMA== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
