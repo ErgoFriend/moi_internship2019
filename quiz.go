@@ -26,11 +26,16 @@ type Answer struct {
 	Round   int    `json:"round"`
 }
 
+// 6 ? 9 ? 8 ? 7 ? 1 ? 6 ? 4 = 20
+// 6 ? 9 ? 8 ? 7 ? 1 = 20
 func ParseQuestion(question string) (string, string) {
-
 	equalPosition := equalPosition(question)
+	// fmt.Printf("len: %+v\n", len(question))
+	// fmt.Printf("ParseQuestion: %+v\n", equalPosition)
 	ques := question[:equalPosition-1]
 	answer := question[equalPosition+2:]
+	// fmt.Printf("ques: %+v\n", ques)
+	// fmt.Printf("answer: %+v\n", answer)
 	return ques, answer
 }
 
@@ -43,9 +48,9 @@ func equalPosition(question string) int {
 	return 0
 }
 
-func createGame() Quiz {
+func createGame(level string) Quiz {
 	accessToken := "Bearer " + token
-	url := "https://apiv2.twitcasting.tv/internships/2019/games?level=1"
+	url := "https://apiv2.twitcasting.tv/internships/2019/games?level=" + level
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", url, nil)
