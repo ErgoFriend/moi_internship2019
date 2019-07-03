@@ -93,14 +93,14 @@ func postAnswear(gameID, answer string) Answer {
 
 func deleteGame() bool {
 	accessToken := "Bearer " + token
-	url := "https://apiv2.twitcasting.tv/internships/2019/games/"
+	url := "https://apiv2.twitcasting.tv/internships/2019/games"
 
 	client := &http.Client{}
 	req, _ := http.NewRequest("DELETE", url, nil)
 	req.Header.Set("Authorization", accessToken)
 	res, _ := client.Do(req)
-	_, _ = ioutil.ReadAll(res.Body)
-	defer res.Body.Close()
+	// body, _ := ioutil.ReadAll(res.Body)
+	// defer res.Body.Close()
 
 	if res.StatusCode == 200 {
 		return true
