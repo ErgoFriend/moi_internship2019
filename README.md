@@ -43,3 +43,6 @@ C:\Users\ergop\Documents\Development\GitHub\moi_internship2019>moi_internship201
 Quiz: {ID:14b1e943d31b118a82c0b0579a281e70 Question:6 ? 5 ? 1 ? 4 ? 8 ? 4 ? 8 = 24 Error:{Code: Message:}}
 {Score: Message:正解です！チャレンジありがとうございました。スコアは 191688 でした。ハイスコア更新です👏インターン応募フォームはこちら『『 https://forms.gle/KBycX3w1azAnHqdg8』です。
 た、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 a4Oo3eD6KNT+xmBaPCHferXIpPaWl3BlCtzpDGmEC+XtEg== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
+
+{Score: Message:正解です！チャレンジありがとうございました。スコアは 191707 でした。ハイスコア更新です👏インターン応募フォームはこちら『『 https://forms.gle/KBycX3w1azAnHqdg8』です。
+た、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 ZENPkZLfGpHO1J4k+V8fpgtki5HpRoA/zFSVhcl2OUNw7A== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
