@@ -3,7 +3,7 @@
 ## Run
 
 ```
-go run main.go search.go quiz.go
+go run main.go
 go build
 ./moi_internship2019
 ```
