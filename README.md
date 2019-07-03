@@ -1,8 +1,16 @@
 # moi_internship2019
 
+## Run
+
+```
+go run main.go search.go quiz.go
+go build
+./moi_internship2019
+```
+
+## Log
+
 {Score: Message:正解です！チャレンジありがとうございました。スコアは 1961 でした。インターン応募フォームはこちら『 https://forms.gle/KBycX3w1azAnHqdg8 』です。また、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 XjSIsb5qmeh6RfTI15kHJhOV8DafrDDoSQpyInvPD59rcw== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
-
-
 
 Kasu:moi_internship2019 ergop$ go run main.go  quiz.go search.go
 Quiz: {ID:3a34a97826f3ae4ca620868b26da8699 Question:5 ? 8 ? 7 ? 7 ? 2 ? 9 ? 8 = 37 Error:{Code: Message:}}
