@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"strconv"
@@ -70,5 +71,7 @@ func main() {
 	wg.Wait()
 
 	// fmt.Printf("%+v\n", resultAnswer)
+
+	bufio.NewScanner(os.Stdin).Scan()
 
 }

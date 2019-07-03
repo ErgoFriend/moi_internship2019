@@ -26,3 +26,20 @@ answer: 5
 Kasu:moi_internship2019 ergop$ ./moi_internship2019 
 Quiz: {ID:d4a1b3ca309840fb84f714e0776178b4 Question:4 ? 8 ? 7 ? 1 ? 2 ? 7 ? 5 = -106 Error:{Code: Message:}}
 {Score: Message:正解です！チャレンジありがとうございました。スコアは 191603 でした。ハイスコア更新です👏インターン応募フォームはこちら『 https://forms.gle/KBycX3w1azAnHqdg8 』です。また、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 DCVwq7rNrPpG9UlubBCKzssi9nVjJIQt05O3zxCblDIrMA== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
+
+
+C:\Users\ergop\Documents\Development\GitHub\moi_internship2019>moi_internship2019.exe
+Quiz: {ID:f887361fc31c39b9e2a172b4900f04dd Question:2 ? 8 ? 3 ? 3 ? 9 ? 1 ? 2 = 21 Error:{Code: Message:}}
+{Score: Message:正解です！チャレンジありがとうございました。スコアは 191672 でした。ハイスコア更新です👏インターン応募フォーム
+はこちら『 https://forms.gle/KBycX3w1azAnHqdg8 』です。また、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレッ
+トキーは『 6JX2G/9i+4fu6AAVuF1suQpwsWzBUzxxsOEuLzPjP8/FBw== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
+
+C:\Users\ergop\Documents\Development\GitHub\moi_internship2019>moi_internship2019.exe
+Quiz: {ID:e01a6426ce07e8b8d4b7a54c38091bb1 Question:8 ? 7 ? 9 ? 4 ? 5 ? 8 ? 8 = -38 Error:{Code: Message:}}
+{Score: Message:正解です！チャレンジありがとうございました。スコアは 191684 でした。ハイスコア更新です👏インターン応募フォームはこちら『『 https://forms.gle/KBycX3w1azAnHqdg8』です。
+た、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 Zlxt3h2OWWoQ/MOwc+sMxlixu8CdeFhsBq8VPprsb/5CNA== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
+
+C:\Users\ergop\Documents\Development\GitHub\moi_internship2019>moi_internship2019.exe
+Quiz: {ID:14b1e943d31b118a82c0b0579a281e70 Question:6 ? 5 ? 1 ? 4 ? 8 ? 4 ? 8 = 24 Error:{Code: Message:}}
+{Score: Message:正解です！チャレンジありがとうございました。スコアは 191688 でした。ハイスコア更新です👏インターン応募フォームはこちら『『 https://forms.gle/KBycX3w1azAnHqdg8』です。
+た、応募に必要なあなたのユーザーIDは『 985849861609160704 』シークレットキーは『 a4Oo3eD6KNT+xmBaPCHferXIpPaWl3BlCtzpDGmEC+XtEg== 』です。それでは、ご応募お待ちしております。 Hints: Round:0}
