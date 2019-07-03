@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3NzEyYjUzMTY2NjhhODdkNzM2NDU3ZTdhMjFhNDFkNTYyMzViMWE2ZWI2M2ZkYzY1NTlkNDM4ZTU3MmEwNGQyYzU0M2U3YWYzZTIwNzYwIn0.eyJhdWQiOiIxODIyMjQ5MzguMjNhNzJmNDA2NzI4M2I0OWY5NjZmOTMyMzViMTg2NDQzN2VjNWY2YTlmY2M5NjVlOGIzOTM5MGRmNWQ2YWE5NCIsImp0aSI6Ijg3NzEyYjUzMTY2NjhhODdkNzM2NDU3ZTdhMjFhNDFkNTYyMzViMWE2ZWI2M2ZkYzY1NTlkNDM4ZTU3MmEwNGQyYzU0M2U3YWYzZTIwNzYwIiwiaWF0IjoxNTYyMTU0NzIyLCJuYmYiOjE1NjIxNTQ3MjIsImV4cCI6MTU3NzcwNjcyMiwic3ViIjoiOTg1ODQ5ODYxNjA5MTYwNzA0Iiwic2NvcGVzIjpbInJlYWQiXX0.TdADyi_whM-FpH4hTBjvcCME17YtUftMm-jUZLzRo2G1n2qoANcrqNw2geXZvii6P93NWnBalAN2mWuG2CfRdQj3jix89Bnkxkxb5usNkRPrMtq8I_gMDcBYmz2xH9jUGiIq9z622zFcV9Z8UD-t6LB0WraYmg_QsGCU3PKatgt-M26u86de-KW-eGfY9a_pE-o63ggSb_lN70jBDgzuu7tohSviads-9aFwwoiw7Suu2ojz1X6NhMz5lfFcV8EDpXhh7v7H1IRX24oQqTLjkXoKobSnD7dRj2kFOorqfyQtnaIrlJKu1JnT3tz-8MAn2pZi0a6jf8sbIwLkEH9wpA"
@@ -62,6 +63,14 @@ func CreateGame(level string) Quiz {
 	var quiz Quiz
 	json.Unmarshal(body, &quiz)
 
+	if len(quiz.ID) < 1 {
+		status := deleteGame()
+		if !status {
+			os.Exit(3)
+		}
+		quiz = CreateGame(level)
+	}
+
 	return quiz
 }
 
@@ -85,13 +94,13 @@ func postAnswear(gameID, answer string) Answer {
 	json.Unmarshal(body, &ans)
 
 	if ans.Round == 1 {
-		_ = DeleteGame()
+		_ = deleteGame()
 	}
 
 	return ans
 }
 
-func DeleteGame() bool {
+func deleteGame() bool {
 	accessToken := "Bearer " + token
 	url := "https://apiv2.twitcasting.tv/internships/2019/games"
 
