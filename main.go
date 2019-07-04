@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 
 	"./util"
@@ -17,7 +16,7 @@ func main() {
 	)
 	quiz = util.CreateGame(strconv.Itoa(level))
 
-	fmt.Printf("Quiz: %+v\n", quiz)
+	// fmt.Printf("Quiz: %+v\n", quiz)
 	strQuiz, answer := util.ParseQuestion(quiz.Question)
 
 	util.EvalFormulas(strQuiz, answer, quiz.ID, level)

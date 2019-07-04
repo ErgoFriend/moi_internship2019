@@ -26,7 +26,7 @@ func eval(formula, answer, quizID string) {
 
 func EvalFormulas(strQuiz, answer, quizID string, level int) {
 	wg := &sync.WaitGroup{} // WaitGroupの値を作る
-	fmt.Printf("EvalFormulas\n")
+	// fmt.Printf("EvalFormulas\n")
 	for _, v := range symbols {
 		wg.Add(1) // wgをインクリメント
 		go func(replaced1 string) {
@@ -74,5 +74,5 @@ func EvalFormulas(strQuiz, answer, quizID string, level int) {
 	}
 
 	wg.Wait()
-	fmt.Printf("EvalFormulas Done.\n")
+	// fmt.Printf("EvalFormulas Done.\n")
 }
